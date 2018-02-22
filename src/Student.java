@@ -91,7 +91,7 @@ public class Student {
 	
 	public void setGender(String newGender) {
 		this.gender = newGender;
-	}
+	}	
 	
 	/*
 	public void addInfo(String addfirstName, String addlastName, String addmajor, String addgpa, String addUIN, String addnetID, String addage, String addgender) {

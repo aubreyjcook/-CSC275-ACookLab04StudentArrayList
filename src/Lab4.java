@@ -1,3 +1,4 @@
+import java.awt.List;
 import java.util.*;
 
 public class Lab4 {
@@ -23,7 +24,7 @@ public class Lab4 {
         System.out.println(george.gender);
 		*/
 		
-		ArrayList<Student> personalInfo = new ArrayList<Student>();
+		ArrayList<Student> personalInfo = new ArrayList<>();
 		
 		System.out.println("Use the menu below to manage personal info held in the database.");
 		System.out.println("");
@@ -60,31 +61,41 @@ public class Lab4 {
 		}
 	}
 	
-	private void addStudent(Student personalInfo[]) {
-		for (int j = 0; j < personalInfo.length; j++) {
-			if (personalInfo[j].name.equals("none")) {
-				System.out.println("Enter the Student name below.");
-				String userInput = input.nextLine();
-				personalInfo[j].name = userInput;
-				System.out.println("Enter the Student weight below.");
-				userInput = input.nextLine();
-				personalInfo[j].weight = userInput;
-				System.out.println("Enter the Student value below.");
-				userInput = input.nextLine();
-				personalInfo[j].value = userInput;
-				System.out.println("Enter the Student durability below.");
-				userInput = input.nextLine();
-				personalInfo[j].durability = userInput;
-				System.out.println(personalInfo[j].name + " has been added successfully.");
-				break;
-			} else if (j == personalInfo.length - 1) {
-				System.out.println("The personalInfo is full. You need to remove an Student to add a new one.");
-			}
-		}
+	private void addStudent(ArrayList<Student> personalInfo) {
+		personalInfo.add(new Student());
+		int index = personalInfo.size(); 
+		Student tempStudent = new Student();
+		System.out.println("Enter the student's first name");
+		String userInput = input.nextLine();
+		tempStudent.setFirstName(userInput);
+		System.out.println("Enter the student's last name");
+		userInput = input.nextLine();
+		tempStudent.setLastName(userInput);
+		System.out.println("Enter the student's major");
+		userInput = input.nextLine();
+		tempStudent.setMajor(userInput);
+		System.out.println("Enter the student's GPA");
+		userInput = input.nextLine();
+		tempStudent.setGPA(userInput);
+		System.out.println("Enter the student's UIN");
+		userInput = input.nextLine();
+		tempStudent.setUIN(userInput);
+		System.out.println("Enter the student's netID");
+		userInput = input.nextLine();
+		tempStudent.setNetID(userInput);
+		System.out.println("Enter the student's age");
+		userInput = input.nextLine();
+		tempStudent.setAge(userInput);
+		System.out.println("Enter the student's gender");
+		userInput = input.nextLine();
+		tempStudent.setGender(userInput);
+		
+		personalInfo.set(index, tempStudent);
+		System.out.println("Student added successfully");
 		return;
 	}
 
-	private void removeStudent(Student personalInfo[]) {
+	private void removeStudent(ArrayList<Student> personalInfo) {
 		System.out.println("Enter the name of the Student to be removed.");
 		String userInput = input.nextLine();
 		
@@ -103,7 +114,7 @@ public class Lab4 {
 		return;
 	}
 
-	private void sortStudents(Student personalInfo[]) {
+	private void sortStudents(ArrayList<Student> personalInfo) {
 		//checking for null values in the array
 		int nullCounter = 0;
 		
@@ -154,7 +165,7 @@ public class Lab4 {
 		return;
 	}
 
-	private void searchStudents(Student personalInfo[]) {
+	private void searchStudents(ArrayList<Student> personalInfo) {
 		System.out.println("Enter the Student you wish to search for.");
 		String userInput = input.nextLine();
 		
@@ -169,43 +180,7 @@ public class Lab4 {
 		System.out.println("The Student was not found in the cargo hold.");
 	}
 
-	private void displayStudents(Student personalInfo[]) {
-		/*int count = 1;
-		
-		for(int i = 0; i < personalInfo.length; i++) {
-			if(personalInfo[i].name.equals("none")) {
-				count++;
-			}
-		}
-		
-		Student[] StudentsFound = new Student[10];
-		
-		if(count > 0) {
-			System.out.println("There are " + count + " empty spaces in the personalInfo.");
-		}
-		
-		for (int i = 0; i < personalInfo.length; i++) {
-			if (!personalInfo[i].name.equals("none") && !(Arrays.asList(StudentsFound).contains(personalInfo[i]))) {
-				
-				count = Collections.frequency(Arrays.asList(personalInfo), personalInfo[i].name);					
-				System.out.println("There are " + count + " " + personalInfo[i].name + " Students in the personalInfo.");
-				StudentsFound[i] = personalInfo[i];
-				
-			}
-		}*/
-		 //simple output
-		for(int i = 0; i<personalInfo.length; i++) {
-			System.out.println(personalInfo[i].firstName);
-			System.out.println(personalInfo[i].lastName);
-			System.out.println(personalInfo[i].major);
-			System.out.println(personalInfo[i].gpa);
-			System.out.println(personalInfo[i].UIN);
-			System.out.println(personalInfo[i].netID);
-		    System.out.println(personalInfo[i].age);
-	        System.out.println(personalInfo[i].gender);
-		}
-		
-		
-		
+	private void displayStudents(ArrayList<Student> personalInfo) {
+		System.out.println(Arrays.toString(personalInfo.toArray()));
 	}
 }
