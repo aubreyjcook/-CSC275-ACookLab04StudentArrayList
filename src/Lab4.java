@@ -90,7 +90,7 @@ public class Lab4 {
 		userInput = input.nextLine();
 		tempStudent.setGender(userInput);
 		
-		personalInfo.set(index, tempStudent);
+		personalInfo.set(index - 1, tempStudent);
 		System.out.println("Student added successfully");
 		return;
 	}
@@ -99,88 +99,18 @@ public class Lab4 {
 		System.out.println("Enter the name of the Student to be removed.");
 		String userInput = input.nextLine();
 		
-		for(int i = 0; i < personalInfo.length; i++) {
-			if(personalInfo[i].name.equals(userInput)) {
-				personalInfo[i].name = "none";
-				personalInfo[i].weight = "none";
-				personalInfo[i].value = "none";
-				personalInfo[i].durability = "none";
-				System.out.println("Student removed.");
-				break;
-			} else if (i == personalInfo.length - 1) {
-				System.out.println("That Student is not in the personalInfo.");
-			}
-		}
-		return;
-	}
-
-	private void sortStudents(ArrayList<Student> personalInfo) {
-		//checking for null values in the array
-		int nullCounter = 0;
-		
-		for(int i= 0; i < personalInfo.length; i++) {
-			if(personalInfo[i].name.equals("none")) {
-				nullCounter++;					
-			}
-		}
-		
-		//moves all null values to the end of the array
-		while(nullCounter > 0) {
-			for(int i = 0; i < personalInfo.length; i++) {
-				if(personalInfo[i].name.equals("none")) {
-					for (int j = (i + 1); j < personalInfo.length; j++) {
-						personalInfo[j - 1] = personalInfo[j];
-					}
-					personalInfo[personalInfo.length-1].name.equals("none");
-					break;
-				}
-			}
-			nullCounter--;
-		}
-		
-		
-		//sorting after moving null values to the end of the array
-		for(int x = 0; x < personalInfo.length; x++) { //this for loop repeats the sorting process according to the length of the array to enhance sorting accuracy
-			for (int i = 0; i < personalInfo.length-1; i++) {
-				int minimum = i;
-				//System.out.println(minimum);
-				for (int j = i + 1; j < personalInfo.length; j++) {
-					//System.out.println(j);
-					//System.out.println(personalInfo[i].compareTo(personalInfo[minimum]));
-					if(!personalInfo[j].name.equals("none")) {
-						if(personalInfo[j].name.compareTo(personalInfo[minimum].name) < 0) {
-							minimum = j;
-							//Debug Note: Outputs array reassignments in real time. 
-							//System.out.println("Swapping " + personalInfo[i] + " with " + personalInfo[minimum]);
-							//System.out.println(Arrays.asList(personalInfo));
-							Student transfer = personalInfo[i];
-							personalInfo[i] = personalInfo[minimum];
-							personalInfo[j] = transfer;
-						}
-					}
-				}
-			}
-		}
-		System.out.println("personalInfo sorted.");
-		return;
-	}
-
-	private void searchStudents(ArrayList<Student> personalInfo) {
-		System.out.println("Enter the Student you wish to search for.");
-		String userInput = input.nextLine();
-		
-		for(int i = 0; i < personalInfo.length; i++) {
-			if(personalInfo[i].name.equals("none")) {
-				continue;
-			} else if (userInput.equals(personalInfo[i].name)) {
-				System.out.println("The Student was found at section number " + (i + 1));
-				return;
-			}
-		}
-		System.out.println("The Student was not found in the cargo hold.");
 	}
 
 	private void displayStudents(ArrayList<Student> personalInfo) {
-		System.out.println(Arrays.toString(personalInfo.toArray()));
+		for(int i = 0; i < personalInfo.size(); i++) {
+		System.out.println(personalInfo.get(i).firstName);
+		System.out.println(personalInfo.get(i).lastName);
+		System.out.println(personalInfo.get(i).major);
+		System.out.println(personalInfo.get(i).gpa);
+		System.out.println(personalInfo.get(i).UIN);
+		System.out.println(personalInfo.get(i).netID);
+		System.out.println(personalInfo.get(i).age);
+		System.out.println(personalInfo.get(i).gender);
+		}
 	}
 }
