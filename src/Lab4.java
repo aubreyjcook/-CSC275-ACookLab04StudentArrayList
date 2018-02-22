@@ -9,21 +9,6 @@ public class Lab4 {
 	}
 	
 	public Lab4() {
-		/* debug note: testing object
-		Student george = new Student();
-		*/
-		
-		/* debug note: testing object output
-		System.out.println(george.firstName);
-		System.out.println(george.lastName);
-		System.out.println(george.major);
-		System.out.println(george.gpa);
-		System.out.println(george.UIN);
-		System.out.println(george.netID);
-	    System.out.println(george.age);
-        System.out.println(george.gender);
-		*/
-		
 		ArrayList<Student> personalInfo = new ArrayList<>();
 		
 		System.out.println("Use the menu below to manage personal info held in the database.");
@@ -96,9 +81,8 @@ public class Lab4 {
 	}
 
 	private void removeStudent(ArrayList<Student> personalInfo) {
-		System.out.println("Enter the name of the Student to be removed.");
-		String userInput = input.nextLine();
-		
+		personalInfo.clear();
+		System.out.println("All students removed.");
 	}
 
 	private void displayStudents(ArrayList<Student> personalInfo) {
